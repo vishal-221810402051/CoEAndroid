@@ -13,15 +13,18 @@ private val DarkColorScheme = darkColorScheme(
     background = CoeBackgroundDark,
     surface = CoeTopBarDark,
     surfaceVariant = CoePanelBase,
+    primaryContainer = CoePrimary.copy(alpha = 0.16f),
+    secondaryContainer = CoePanelOverlay,
     onBackground = CoeTextPrimaryDark,
     onSurface = CoeTextPrimaryDark,
     onSurfaceVariant = CoeTextSecondaryDark,
-    outline = CoePrimarySoft.copy(alpha = 0.34f)
+    outline = CoeTextMutedDark.copy(alpha = 0.46f)
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = CoePrimary,
     secondary = CoeSecondary,
+    tertiary = CoePrimarySoft,
     error = CoeError
 )
 

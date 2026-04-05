@@ -28,17 +28,25 @@ fun StatusChip(
     modifier: Modifier = Modifier
 ) {
     val (backgroundColor, textColor, borderColor) = when (variant) {
-        StatusChipVariant.Success -> Triple(CoeSuccess.copy(alpha = 0.14f), CoeSuccess, CoeSuccess.copy(alpha = 0.44f))
-        StatusChipVariant.Warning -> Triple(CoeWarning.copy(alpha = 0.14f), CoeWarning, CoeWarning.copy(alpha = 0.46f))
+        StatusChipVariant.Success -> Triple(
+            CoeSuccess.copy(alpha = 0.16f),
+            CoeSuccess,
+            CoeSuccess.copy(alpha = 0.5f)
+        )
+        StatusChipVariant.Warning -> Triple(
+            CoeWarning.copy(alpha = 0.16f),
+            CoeWarning,
+            CoeWarning.copy(alpha = 0.5f)
+        )
         StatusChipVariant.Error -> Triple(
-            MaterialTheme.colorScheme.error.copy(alpha = 0.14f),
+            MaterialTheme.colorScheme.error.copy(alpha = 0.16f),
             MaterialTheme.colorScheme.error,
-            MaterialTheme.colorScheme.error.copy(alpha = 0.48f)
+            MaterialTheme.colorScheme.error.copy(alpha = 0.52f)
         )
         StatusChipVariant.Neutral -> Triple(
-            CoeNeutralChip.copy(alpha = 0.7f),
+            CoeNeutralChip.copy(alpha = 0.74f),
             MaterialTheme.colorScheme.onSurfaceVariant,
-            MaterialTheme.colorScheme.primary.copy(alpha = 0.24f)
+            MaterialTheme.colorScheme.outline.copy(alpha = 0.42f)
         )
     }
 

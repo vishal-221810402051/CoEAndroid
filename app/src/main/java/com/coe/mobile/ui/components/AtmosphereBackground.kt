@@ -20,6 +20,7 @@ fun AtmosphereBackground(
 ) {
     val primary = MaterialTheme.colorScheme.primary
     val secondary = MaterialTheme.colorScheme.secondary
+    val gridBase = MaterialTheme.colorScheme.onSurfaceVariant
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -27,15 +28,15 @@ fun AtmosphereBackground(
                 brush = Brush.verticalGradient(
                     colors = listOf(
                         MaterialTheme.colorScheme.background,
-                        MaterialTheme.colorScheme.surface,
+                        MaterialTheme.colorScheme.surface.copy(alpha = 0.94f),
                         MaterialTheme.colorScheme.background
                     )
                 )
             )
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val gridStep = 44.dp.toPx()
-            val lineColor = primary.copy(alpha = 0.06f)
+            val gridStep = 48.dp.toPx()
+            val lineColor = gridBase.copy(alpha = 0.06f)
             var x = 0f
             while (x < size.width) {
                 drawLine(
@@ -49,7 +50,7 @@ fun AtmosphereBackground(
             var y = 0f
             while (y < size.height) {
                 drawLine(
-                    color = lineColor.copy(alpha = 0.04f),
+                    color = lineColor.copy(alpha = 0.03f),
                     start = Offset(0f, y),
                     end = Offset(size.width, y),
                     strokeWidth = 1f
@@ -60,25 +61,25 @@ fun AtmosphereBackground(
             drawCircle(
                 brush = Brush.radialGradient(
                     colors = listOf(
-                        primary.copy(alpha = 0.16f),
+                        primary.copy(alpha = 0.1f),
                         Color.Transparent
                     ),
-                    center = Offset(size.width * 0.85f, size.height * 0.1f),
-                    radius = size.minDimension * 0.5f
+                    center = Offset(size.width * 0.82f, size.height * 0.15f),
+                    radius = size.minDimension * 0.48f
                 ),
-                radius = size.minDimension * 0.5f,
-                center = Offset(size.width * 0.85f, size.height * 0.1f)
+                radius = size.minDimension * 0.48f,
+                center = Offset(size.width * 0.82f, size.height * 0.15f)
             )
             drawCircle(
                 brush = Brush.radialGradient(
                     colors = listOf(
-                        secondary.copy(alpha = 0.10f),
+                        secondary.copy(alpha = 0.07f),
                         Color.Transparent
                     ),
                     center = Offset(size.width * 0.2f, size.height * 0.8f),
-                    radius = size.minDimension * 0.6f
+                    radius = size.minDimension * 0.55f
                 ),
-                radius = size.minDimension * 0.6f,
+                radius = size.minDimension * 0.55f,
                 center = Offset(size.width * 0.2f, size.height * 0.8f)
             )
         }

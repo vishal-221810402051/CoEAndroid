@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Brush
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,13 +27,13 @@ fun AppTopBar(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            MaterialTheme.colorScheme.surface.copy(alpha = 0.96f),
-                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.88f)
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
+                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.78f)
                         )
                     )
                 ),
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.84f),
+                containerColor = Color.Transparent,
                 titleContentColor = MaterialTheme.colorScheme.onSurface
             ),
             title = {
@@ -46,7 +47,7 @@ fun AppTopBar(
             }
         )
         HorizontalDivider(
-            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.34f)
         )
     }
 }

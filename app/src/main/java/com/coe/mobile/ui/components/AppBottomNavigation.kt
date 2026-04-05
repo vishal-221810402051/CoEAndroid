@@ -39,7 +39,7 @@ fun AppBottomNavigation(
         )
     ) {
         HorizontalDivider(
-            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.16f)
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.32f)
         )
         NavigationBar(
             containerColor = Color.Transparent
@@ -58,7 +58,7 @@ fun AppBottomNavigation(
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary,
                         unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
-                        selectedTextColor = MaterialTheme.colorScheme.secondary,
+                        selectedTextColor = MaterialTheme.colorScheme.primary,
                         unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                         indicatorColor = Color.Transparent
                     ),
@@ -69,8 +69,8 @@ fun AppBottomNavigation(
                                 .background(
                                     brush = Brush.horizontalGradient(
                                         colors = listOf(
-                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.2f * selectedProgress),
-                                            MaterialTheme.colorScheme.secondary.copy(alpha = 0.14f * selectedProgress)
+                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.22f * selectedProgress),
+                                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.46f * selectedProgress)
                                         )
                                     )
                                 )

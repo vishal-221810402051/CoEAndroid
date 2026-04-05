@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -36,7 +37,7 @@ fun SciFiPanel(
     onClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val panelShape = RoundedCornerShape(16.dp)
+    val panelShape = RoundedCornerShape(18.dp)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val pressScale by animateFloatAsState(
@@ -66,22 +67,22 @@ fun SciFiPanel(
                 scaleY = pressScale
             )
             .shadow(
-                elevation = 10.dp,
+                elevation = 5.dp,
                 shape = panelShape,
-                ambientColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
-                spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                ambientColor = Color.Black.copy(alpha = 0.32f),
+                spotColor = Color.Black.copy(alpha = 0.24f)
             )
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.9f),
-                        MaterialTheme.colorScheme.surface.copy(alpha = 0.86f)
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.88f),
+                        MaterialTheme.colorScheme.surface.copy(alpha = 0.76f)
                     )
                 )
             )
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.22f),
+                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.34f),
                 shape = panelShape
             )
     ) {
@@ -91,32 +92,43 @@ fun SciFiPanel(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            MaterialTheme.colorScheme.primary.copy(alpha = 0.06f),
-                            MaterialTheme.colorScheme.secondary.copy(alpha = 0.03f)
+                            MaterialTheme.colorScheme.secondary.copy(alpha = 0.06f),
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.03f),
+                            Color.Transparent
                         )
                     )
+                )
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(1.dp)
+                .border(
+                    width = 1.dp,
+                    color = Color.White.copy(alpha = 0.045f),
+                    shape = panelShape
                 )
         )
         if (cornerAccents) {
             CornerAccent(
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(start = 8.dp, top = 8.dp)
+                    .padding(start = 10.dp, top = 10.dp)
             )
             CornerAccent(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(end = 8.dp, top = 8.dp)
+                    .padding(end = 10.dp, top = 10.dp)
             )
             CornerAccent(
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-                    .padding(start = 8.dp, bottom = 8.dp)
+                    .padding(start = 10.dp, bottom = 10.dp)
             )
             CornerAccent(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(end = 8.dp, bottom = 8.dp)
+                    .padding(end = 10.dp, bottom = 10.dp)
             )
         }
         Column(
@@ -130,9 +142,9 @@ fun SciFiPanel(
 private fun CornerAccent(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .size(width = 16.dp, height = 2.dp)
+            .size(width = 12.dp, height = 2.dp)
             .background(
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.46f),
                 shape = RoundedCornerShape(999.dp)
             )
     )
