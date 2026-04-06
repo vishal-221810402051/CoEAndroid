@@ -5,6 +5,7 @@ import com.coe.mobile.data.model.DecisionResponse
 import com.coe.mobile.data.model.MeetingActionResponse
 import com.coe.mobile.data.model.MeetingDetailResponse
 import com.coe.mobile.data.model.PendingInboxResponse
+import com.coe.mobile.data.model.ProcessingStatusResponse
 import com.coe.mobile.data.model.RecentMeetingsResponse
 import com.coe.mobile.data.model.UploadAudioResponse
 import okhttp3.MultipartBody
@@ -44,6 +45,11 @@ interface ApiService {
     suspend fun getMeetingDetail(
         @Path("meeting_id") meetingId: String
     ): Response<MeetingDetailResponse>
+
+    @GET("/api/meetings/{meeting_id}/processing-status")
+    suspend fun getProcessingStatus(
+        @Path("meeting_id") meetingId: String
+    ): Response<ProcessingStatusResponse>
 
     @DELETE("/api/meetings/{meeting_id}")
     suspend fun deleteMeeting(

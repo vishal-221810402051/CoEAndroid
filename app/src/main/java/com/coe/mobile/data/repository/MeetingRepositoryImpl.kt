@@ -4,6 +4,7 @@ import com.coe.mobile.data.api.ApiService
 import com.coe.mobile.data.api.RetrofitInstance
 import com.coe.mobile.data.model.MeetingDetailResponse
 import com.coe.mobile.data.model.MeetingHistoryItem
+import com.coe.mobile.data.model.ProcessingStatusResponse
 import org.json.JSONObject
 import java.io.IOException
 
@@ -40,6 +41,31 @@ class MeetingRepositoryImpl(
             } else {
                 Result.failure(IllegalStateException(parseError(response.errorBody()?.string())
                     ?: "Failed to fetch meeting detail (${response.code()})."))
+            }
+        } catch (error: IOException) {
+            Result.failure(IllegalStateException("Unable to reach laptop API.", error))
+        } catch (error: Exception) {
+            Result.failure(error)
+        }
+    }
+
+    override suspend fun getProcessingStatus(meetingId: String): Result<ProcessingStatusResponse> {
+        return try {
+            val response = apiService.getProcessingStatus(meetingId)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body == null) {
+                    Result.failure(IllegalStateException("Processing status response was empty."))
+                } else {
+                    Result.success(body)
+                }
+            } else {
+                Result.failure(
+                    IllegalStateException(
+                        parseError(response.errorBody()?.string())
+                            ?: "Failed to fetch processing status (${response.code()})."
+                    )
+                )
             }
         } catch (error: IOException) {
             Result.failure(IllegalStateException("Unable to reach laptop API.", error))
